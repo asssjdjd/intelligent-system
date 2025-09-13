@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BMI Health Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h2>BMI Health Prediction</h2>
+    <form method="POST">
+        <label>Job:</label>
+        <input type="text" name="job" value="{{ job }}" required>
+
+        <label>Age:</label>
+        <input type="number" name="age" value="{{ age }}" required>
+
+        <label>Height (cm):</label>
+        <input type="number" name="height" value="{{ height }}" required>
+
+        <label>Weight (kg):</label>
+        <input type="number" name="weight" value="{{ weight }}" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if result %}
+    <div class="result">
+        <h3>Result: {{ result.pred | capitalize }}</h3>
+        <p>{{ result.guide }}</p>
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>
